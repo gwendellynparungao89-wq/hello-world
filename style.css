@@ -1110,3 +1110,84 @@ button {
 
 
 }
+
+
+
+/* =========================
+   MUSIC BUTTONS
+========================= */
+
+.music-button {
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #3b82f6
+    );
+
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* Hover */
+
+.music-button:hover {
+
+    transform: scale(1.12);
+
+    box-shadow:
+        0 0 15px rgba(139, 92, 246, 0.5);
+
+}
+
+
+/* Currently playing */
+
+.music-button.playing {
+
+    animation: musicPulse 1.2s infinite;
+
+    box-shadow:
+        0 0 20px rgba(139, 92, 246, 0.8);
+
+}
+
+
+/* Little pulse */
+
+@keyframes musicPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
