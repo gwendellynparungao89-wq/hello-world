@@ -260,3 +260,63 @@ letterButton.addEventListener(
 
     }
 );
+
+
+
+// =========================
+// MUSIC BUTTONS
+// =========================
+
+const musicPlayer = document.getElementById("musicPlayer");
+const musicButtons = document.querySelectorAll(".music-button");
+
+let currentlyPlaying = null;
+
+musicButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        const song = this.dataset.song;
+
+        // If clicking the currently playing song
+        if (currentlyPlaying === this && !musicPlayer.paused) {
+
+            musicPlayer.pause();
+
+            this.classList.remove("playing");
+
+            return;
+        }
+
+
+        // Stop the previous song
+        musicButtons.forEach(btn => {
+            btn.classList.remove("playing");
+        });
+
+
+        // Load the new song
+        musicPlayer.src = song;
+
+        musicPlayer.play();
+
+        this.classList.add("playing");
+
+        currentlyPlaying = this;
+
+    });
+
+});
+
+
+// Remove the glowing effect when the song ends
+
+musicPlayer.addEventListener("ended", function () {
+
+    if (currentlyPlaying) {
+        currentlyPlaying.classList.remove("playing");
+    }
+
+    currentlyPlaying = null;
+
+});
